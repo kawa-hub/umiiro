@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Umiiro</title>
+<meta name="description" content="Umiiro is a guide to the seas of Japan, with underwater photos and a map of places from Okinawa to Hokkaido.">
+<meta property="og:title" content="Umiiro">
+<meta property="og:description" content="A guide to the seas of Japan, with underwater photos and a map.">
+<meta name="theme-color" content="#06384f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2306384f'/%3E%3Cpath d='M4 15q3.5-5 7 0t7 0 7 0 3 0' fill='none' stroke='%239ff0df' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M4 23q3.5-5 7 0t7 0 7 0 3 0' fill='none' stroke='%239ff0df' stroke-opacity='.5' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Patrick+Hand&display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Umi<span>iro</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">The seas</a>
+      <a href="#map">Map</a>
+      <a href="#photos">Photos</a>
+    </nav>
+    <div class="social" id="socialTop"></div>
+  </div>
+</header>
+
+<aside class="gauge" aria-hidden="true">
+  <div class="g-read">DEPTH <b id="gDepth">0</b> m</div>
+  <div class="g-track">
+    <span class="g-tick" style="top:0"><i>0</i></span>
+    <span class="g-tick" style="top:25%"><i>10</i></span>
+    <span class="g-tick" style="top:50%"><i>20</i></span>
+    <span class="g-tick" style="top:75%"><i>30</i></span>
+    <span class="g-tick" style="top:100%"><i>40</i></span>
+    <span class="g-mark" id="gMark"></span>
+  </div>
+</aside>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="coords" id="coords"></p>
+      <h1>Japan's seas,<br>in every shade<br>of blue.</h1>
+      <p class="lead">From the coral reefs of Okinawa to the drift ice of Hokkaido. Underwater photos and a map of the seas of Japan.</p>
+      <div class="cta">
+        <a class="btn primary" href="#map">Explore the map</a>
+        <a class="btn" href="#photos">See photos</a>
+      </div>
+      <div class="cta social-btns" id="socialHero"></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow">The seas of Japan</p>
+        <h2>Seas that feel like<br>different countries.</h2>
+      </div>
+      <p>The Japanese archipelago stretches about 3,000 km from north to south. Coral reefs spread around the southern islands, while drift ice reaches the northern coast each winter. The warm Kuroshio and the cold Oyashio currents meet offshore, so the sea changes character with every place and season. Umiiro collects some of them in one place.</p>
+    </div>
+  </section>
+
+  <section id="map">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Map</p>
+        <h2>Find a sea on the map</h2>
+        <p>Select a pin to read about that sea and see its photos.</p>
+      </div>
+      <div class="mapgrid">
+        <div class="mapbox"><svg id="mapsvg" viewBox="0 0 520 600" role="group" aria-label="Map of Japan with dive spots"></svg></div>
+        <div class="panel" id="panel" aria-live="polite"><p class="desc">Loading…</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Photos</p>
+        <h2>Underwater photos</h2>
+        <p>Pick a sea to see its photos. Select a photo to view it larger.</p>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Filter photos by sea"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="foot-brand">Umi<span>iro</span></p>
+      <p>The colors of Japan's seas.</p>
+      <p class="small">Information on this site is a general guide. Check current sea conditions and safety advice with a local dive operator before you go.</p>
+    </div>
+    <div>
+      <div class="foot-links" id="socialFoot"></div>
+      <p class="small" id="credit"></p>
+      <p class="small">© 2026 Umiiro</p>
+    </div>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Photo viewer">
+  <div class="lb-in">
+    <button type="button" class="lb-x" id="lbClose" aria-label="Close">×</button>
+    <button type="button" class="lb-n lb-prev" id="lbPrev" aria-label="Previous photo">‹</button>
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button type="button" class="lb-n lb-next" id="lbNext" aria-label="Next photo">›</button>
+  </div>
+</dialog>
+
+<script src="/map.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

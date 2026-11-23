@@ -1,0 +1,10 @@
+name = "umiiro"
+compatibility_date = "2025-06-01"
+pages_build_output_dir = "./public"
+
+# Stores the spots, links and photos. Create it with:
+#   npx wrangler kv namespace create UMIIRO
+# then paste the id it prints below.
+[[kv_namespaces]]
+binding = "UMIIRO"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
